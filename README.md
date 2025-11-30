@@ -1,197 +1,169 @@
-ACE India — Emotion-Aware Food Intelligence Layer
+
+
+# ACE India — Emotion-Aware Food Intelligence Layer
 
 AI-powered contextual food recommendations inspired by Korea’s hyper-personalized food delivery ecosystem.
 
-Overview
+## Overview
 
-Indian food delivery apps rely heavily on past orders, generic popularity, and discounts.
-But none understand the user’s real-time emotional and situational context.
+Indian food delivery apps rely heavily on past orders, generic popularity, and discounts. However, they do not understand the user’s real-time emotional and situational context.
 
 ACE India is a working prototype that brings Korean-style AI hyper-personalization to the Indian food ecosystem by combining:
 
-Emotion signals (mood)
+* Emotion signals (mood)
+* Weather
+* Diet type
+* Party size
+* Price sensitivity
+* User preferences
+* Trending dishes
 
-Weather
+The system recommends the top 5 emotionally contextual dishes along with explanations such as:
 
-Diet type
+* “Perfect for rainy weather”
+* “Comfort food since you’re tired”
+* “Matches your veg preference”
+* “Trending today in your city”
 
-Party size
-
-Price sensitivity
-
-User preferences
-
-Trending dishes
-
-The system recommends the top 5 emotionally contextual dishes along with explanations like:
-
-“Perfect for rainy weather”
-
-“Comfort food since you’re tired”
-
-“Matches your veg preference”
-
-“Trending today in your city”
-
-Target Users
+## Target Users
 
 ACE India is designed for:
 
-1. Food Delivery Platforms
+### Food Delivery Platforms
 
-Who want to boost:
+To improve:
 
-Conversion rate
+* Conversion rate
+* User retention
+* Average Order Value (AOV)
+* Brand differentiation
 
-User retention
+### Restaurant Partners
 
-AOV (Average Order Value)
+To gain:
 
-Brand differentiation
+* Hyper-local insights
+* Context-aware visibility
+* Intelligent menu promotions
 
-2. Restaurant Partners
-
-Who want:
-
-Hyper-local insights
-
-Context-aware visibility
-
-Intelligent menu promotions
-
-3. End Users (Consumers)
+### End Users (Consumers)
 
 Who expect:
 
-Smarter, more personal, emotion-friendly food suggestions
+* Smarter, personal, emotion-friendly food suggestions
+* A feeling that “this app gets me”
 
-“This app gets me” experience
+## Core Idea
 
-Core Idea
+Korean food delivery platforms such as Baemin, Yogiyo, and Coupang Eats personalize food recommendations based on:
 
-Modern Korean apps like Baemin, Yogiyo, Coupang Eats personalize food based on:
+* Mood
+* Weather
+* Diet
+* Time of day
+* Local micro-trends
+* Party size
+* Health goals
 
-Mood
+Indian platforms have not yet implemented this deeper layer of emotional and situational personalization. ACE India fills this gap by adding emotion-aware intelligence on top of standard recommendation systems.
 
-Weather
+## System Architecture
 
-Diet
+### Input Signals
 
-Time of day
+* mood
+* weather
+* diet
+* party_size
+* price_sensitivity
+* user_id
 
-Local micro-trends
+### AI Pipeline
 
-Party size
-
-Health goals
-
-Indian apps haven't cracked this layer yet.
-ACE India fills this gap by adding emotion-aware intelligence on top of standard recommendations.
-
-System Architecture
-Input Signals
-
-mood
-
-weather
-
-diet
-
-party_size
-
-price_sensitivity
-
-user_id
-
-AI Pipeline
-1. Semantic Understanding (Embeddings)
+#### Semantic Understanding (Embeddings)
 
 Model: SentenceTransformer MiniLM
+Converts dish descriptions into meaning-aware vectors.
 
-Converts dish descriptions into meaningful vectors
+Examples:
 
-Example:
+* “Rasam → comfort food”
+* “Hot chocolate → warmth”
 
-“Rasam → comfort food”
+#### Retrieval Layer
 
-“Hot chocolate → warmth”
+FAISS-based vector search
+Retrieves dishes most relevant to the user’s real-time context.
 
-2. Retrieval Layer
-
-FAISS for fast vector search
-
-Finds dishes most relevant to context
-
-3. Ranking Layer
+#### Ranking Layer
 
 LightGBM ranking model
+Scores and ranks dishes based on factors such as:
 
-Scores dishes based on:
+* Mood–category alignment
+* Weather–food match
+* Veg/non-veg preference
+* Price fit
+* User taste patterns
+* Local trending score
+* Party size relevance
 
-Mood–category alignment
+#### Explanation Engine
 
-Weather–food match
+Generates clear, simple reasoning for every recommendation delivered to the user.
 
-Veg/non-veg preference
+## Tech Stack
 
-User taste patterns
+| Component      | Technology                          |
+| -------------- | ----------------------------------- |
+| Embeddings     | SentenceTransformer MiniLM          |
+| Vector Search  | FAISS                               |
+| Ranking        | LightGBM                            |
+| Backend        | Python + FastAPI                    |
+| Demo Hosting   | Ngrok                               |
+| Infrastructure | CPU-friendly, low-cost, open-source |
 
-Price fit
+## Features
 
-Local trending score
+* Real-time mood and weather-aware recommendations
+* Explanation provided for each suggested dish
+* High-speed retrieval using FAISS
+* Lightweight architecture suitable for CPU environments
+* Simple integration into existing food delivery systems
+* Scalable to millions of dishes and user profiles
 
-Party size relevance
+## Impact and Why It Matters
 
-4. Explanation Engine
+### Higher Conversion Rate (10–18%)
 
-Generates simple human reasons behind every recommendation.
-
-Tech Stack
-Component	Technology
-Embeddings	SentenceTransformer MiniLM
-Vector Search	FAISS
-Ranking	LightGBM
-Backend	Python + FastAPI
-Demo Hosting	Ngrok
-Infra	CPU-friendly, low-cost, open-source
-
-Features
-
-Real-time mood + weather aware food recommendations
-Explanations for every suggested dish
-Blazing fast retrieval using FAISS
-Lightweight architecture → runs on CPU
-Easy to integrate into existing food delivery pipelines
-Scalability to millions of dishes
-
- Impact & Why It Matters
-1. Higher Conversion Rate (10–18%)
-
-Emotion-aware suggestions increase ordering probability.
+Emotion-aware suggestions increase ordering likelihood.
+Examples:
 Rain → soups, pakoras, chai
 Tired → rasam, khichdi, warm foods
 
-2. Increased AOV
+### Increased AOV
 
-Smart, contextual upsells:
+Contextual upselling includes:
 Party size 3+ → combos
-Rain → snacks + chai
+Rainy weather → snacks plus chai
 Gym users → protein bowls
 
-3. Stronger Retention
+### Stronger Retention
 
-Users return when recommendations feel “emotionally right”.
+Users return more often when the app delivers emotionally relevant and personalized suggestions.
 
-4. Brand Differentiation
+### Brand Differentiation
 
-Creates a competitive moat similar to Korean apps.
+Creates a competitive advantage similar to Korean food delivery ecosystems.
 
-5. Hyper-local Intelligence
+### Hyper-local Intelligence
 
-Learns food trends across:
+Learns eating patterns and trends across specific local clusters such as:
 
-Offices
+* Offices
+* Colleges
+* Neighborhoods
 
-Colleges
 
-Neighborhood clusters
+
+You can now copy the entire text above and paste it directly into your GitHub `README.md`.
